@@ -29,7 +29,7 @@ async function mintMoche() {
 }
 
 
-//MIntea NFT para whitelist
+//Ontiene el precio Base del NFT
 async function nftMochePriceBase() {
 
     const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
@@ -37,6 +37,9 @@ async function nftMochePriceBase() {
     window.web3 = new Web3(window.ethereum);
     const contract = new web3.eth.Contract(minABI, contractMocheAddress);
     rpta = await contract.methods.nftCurrentPrice().call(); /*input: methodo  */
+
+    rpta=rpta.substring(0,(rpta.length - 18));
+
   
     console.log(rpta);
 
